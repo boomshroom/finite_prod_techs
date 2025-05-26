@@ -1,0 +1,8 @@
+{
+  "name": "finite_prod_techs",
+  "version": "0.0.1",
+  "title": "Finite Productivity Technologies",
+  "author": "boomshroom",
+  "factorio_version": "2.0",
+  "description": "Sets limits on 'infinite' productivity technologies based on the practical maximum productivity of its recipes."
+}
