@@ -15,19 +15,23 @@ end
 function min_recipe_prod (recipe)
   local min_prod = category_prod[recipe.category or "crafting"]
   if not min_prod then
-    error("Category " .. recipe.category .. " does not exist")
+    log("Category " .. recipe.category .. " does not exist")
+    return 0
   end
   for _, extra in pairs(recipe.additional_categories or {}) do
-    if min_prod > category_prod[extra] then
-      min_prod = category_prod[extra]
+    extra_cat_prod = category_prod[extra]
+    if not extra_cat_prod then
+      log("Category " .. recipe.category .. " does not exist")
+      return 0
     end
+    min_prod = math.min(min_prod, extra_cat_prod)
   end
 
   return min_prod
 end
 
 for _, tech in pairs(data.raw["technology"]) do
-  if tech.max_level ~= "infinite" then
+  if tech.max_level ~= "infinite" or (not tech.effects) then
     goto continue
   end
 
@@ -40,13 +44,12 @@ for _, tech in pairs(data.raw["technology"]) do
     local recipe = data.raw["recipe"][effect.recipe]
     if not recipe then
       log("Recipe " .. effect.recipe .. " does not exist")
+      goto continue
     else
       local min_prod = min_recipe_prod(recipe)
       local max_prod = recipe.maximum_productivity or 3
       local level = math.ceil((max_prod - min_prod) / effect.change)
-      if level > max_level then
-        max_level = level
-      end
+      max_level = math.max(max_level, level)
     end
   end
 

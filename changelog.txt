@@ -1,0 +1,14 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 2025-05-27
+  Bugfixes:
+    - Fix crash for infinite technologies with no direct effects.
+  Graphics:
+    - Resize thumbnail to 144x144 pixels.
+  Info:
+    - Add changelog.
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 2025-05-26
+  Major Features:
+    - Initial release.
