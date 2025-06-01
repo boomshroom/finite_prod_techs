@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.0.3
+Date: 2025-05-31
+  Minor Features:
+   - Keep technologies as infinite if recipe max prod is beyond engine limit
+     (Primarily for Fair Unlimited productivity)
+---------------------------------------------------------------------------------------------------
 Version: 0.0.2
 Date: 2025-05-27
   Bugfixes:
