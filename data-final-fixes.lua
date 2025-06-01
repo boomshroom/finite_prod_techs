@@ -48,6 +48,10 @@ for _, tech in pairs(data.raw["technology"]) do
     else
       local min_prod = min_recipe_prod(recipe)
       local max_prod = recipe.maximum_productivity or 3
+      if max_prod >= 327.67 then
+        -- engine prod limit. May as well keep infinite at this point.
+        goto continue
+      end
       local level = math.ceil((max_prod - min_prod) / effect.change)
       max_level = math.max(max_level, level)
     end
